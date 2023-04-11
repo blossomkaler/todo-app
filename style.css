@@ -52,6 +52,13 @@ body{
     color: white;
     letter-spacing: 0.7rem;
 }
+.heading img{
+    cursor: pointer;
+}
+
+.sun-icon{
+    display: none;
+}
 
 .container .content{
     width: max(45vw, 30rem);
@@ -119,7 +126,6 @@ body{
 .todo-status-mobile{
     display: none;
 }
-
 
 /*``````````````````MOBILE DESIGN```````````````````````````````*/
 @media only screen and (max-width: 520px){

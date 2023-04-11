@@ -28,3 +28,21 @@ function populateList(tasks, taskList) {   //tasks is an array of objects
         `;
     }).join('');
 }
+
+/*``````````````````````````CHANGE THEME````````````````````````````````*/
+const sunIcon = document.querySelector('.sun-icon');
+const moonIcon = document.querySelector('.moon-icon');
+const bgImg = document.querySelector('.bg');
+
+moonIcon.addEventListener('click',function(){    
+    moonIcon.style.display = 'none';
+    sunIcon.style.display = 'block' ;
+    bgImg.style.backgroundImage = 'url("/images/bg-desktop-dark.jpg")'
+   
+});
+
+sunIcon.addEventListener('click',function(){    
+    moonIcon.style.display = 'block';
+    sunIcon.style.display = 'none' ;
+    bgImg.style.backgroundImage = 'url("/images/bg-desktop-light.jpg")'
+});
