@@ -170,8 +170,19 @@ body{
 
 .todo-status-mobile{
     display: flex;
+    justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
+    background-color: white;
+    box-shadow: 0.4em 0.4em .4em  rgba(0, 0, 0, 0.153), -0.3em 0 .3em rgba(0, 0, 0, 0.2);
+    width: 85vw;
+    padding: 1.2rem;
+    border-radius: 0.3rem;
+}
+
+.todo-status-mobile.dark{
+    color: var(--darktheme-gray);
+    background-color: var(--darktheme-desaturated-Blue);
 }
 
 }

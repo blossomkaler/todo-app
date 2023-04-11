@@ -42,6 +42,7 @@ moonIcon.addEventListener('click',function(){
     addTodo.classList.add('dark');
     todoList.classList.add('dark');
     document.querySelector('.todo-list').classList.add('dark');
+    document.querySelector('.todo-status-mobile').classList.add('dark');
 });
 
 sunIcon.addEventListener('click',function(){    
@@ -52,5 +53,6 @@ sunIcon.addEventListener('click',function(){
     addTodo.classList.remove('dark');
     todoList.classList.remove('dark');
     document.querySelector('.todo-list').classList.remove('dark');
+    document.querySelector('.todo-status-mobile').classList.remove('dark');
 
 });
