@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width"> 
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Todo app</title>
+</head>
+<body>
+    <div class="bg"></div>
+
+    <div class="container">
+      <div class="heading">
+        <div class="name">Todo</div>
+        <div class="theme-icon"><img src="/images/icon-moon.svg" alt=""></div>
+      </div>
+
+      <div class="content">
+        <div class="add-todo">
+          <input type="text" name="todo" placeholder="Create a new todo.. " required>
+        </div>
+
+        <div class="todo-list">
+          <ul class="list-preview">
+            <li>loading TODOs .. </li>
+          </ul>
+    
+          <div class="actions">
+            <div class="items-left"><span></span> items left</div>
+    
+            <div class="todo-status">
+              <div class="all">All</div>
+              <div class="active-todo">Active</div>
+              <div class="complete">Completed</div>
+            </div>
+    
+            <div class="clear">Clear Completed</div>
+          </div>
+        </div>
+
+      </div>
+  
+    </div>
+
+
+
+<!-- 
+  Todo
+
+ ~Add dynamic number~ 
+
+  Drag and drop to reorder list -->
+
+<script src="index.js"></script>
+</body>
+</html>
