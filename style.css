@@ -115,4 +115,26 @@ body{
     align-items: center;
     gap: 1rem;
 }
-    
+
+.todo-status-mobile{
+    display: none;
+}
+
+
+/*``````````````````MOBILE DESIGN```````````````````````````````*/
+@media only screen and (max-width: 520px){
+
+.actions .todo-status{
+    display: none;
+}
+
+.container .heading, .container .content{
+    width: 85vw;
+}
+
+.todo-status-mobile{
+    display: flex;
+    gap: 1rem;
+}
+
+}
