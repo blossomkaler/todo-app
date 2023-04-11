@@ -37,12 +37,20 @@ const bgImg = document.querySelector('.bg');
 moonIcon.addEventListener('click',function(){    
     moonIcon.style.display = 'none';
     sunIcon.style.display = 'block' ;
-    bgImg.style.backgroundImage = 'url("/images/bg-desktop-dark.jpg")'
-   
+    bgImg.style.backgroundImage = 'url("/images/bg-desktop-dark.jpg")';
+    document.body.style.backgroundColor = 'black';
+    addTodo.classList.add('dark');
+    todoList.classList.add('dark');
+    document.querySelector('.todo-list').classList.add('dark');
 });
 
 sunIcon.addEventListener('click',function(){    
     moonIcon.style.display = 'block';
     sunIcon.style.display = 'none' ;
-    bgImg.style.backgroundImage = 'url("/images/bg-desktop-light.jpg")'
+    bgImg.style.backgroundImage = 'url("/images/bg-desktop-light.jpg")';
+    document.body.style.backgroundColor = 'white';
+    addTodo.classList.remove('dark');
+    todoList.classList.remove('dark');
+    document.querySelector('.todo-list').classList.remove('dark');
+
 });

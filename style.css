@@ -8,7 +8,12 @@
 
 :root{
     --light-gray : hsl(236, 33%, 92%);
-    --grayish-blue: hsl(236, 9%, 61%);
+    --grayish-blue: hsl(240, 4%, 42%);
+
+    /*``````````dark theme``````````````````*/
+    --darktheme-desaturated-Blue: hsl(235, 24%, 19%);
+    --darktheme-gray : hsl(234, 39%, 85%);
+    --darktheme-grayish-blue : hsl(230, 7%, 33%); 
 }
  
 body{
@@ -79,7 +84,7 @@ body{
     background-color: white;
     border-radius: 0.3rem;
     box-shadow: 0.6em 0.6em .6em  rgba(0, 0, 0, 0.153), -0.3em 0 .4em rgba(0, 0, 0, 0.2);
-}
+} 
 
 .todo-list .list-preview{
     list-style: none;
@@ -126,6 +131,28 @@ body{
 .todo-status-mobile{
     display: none;
 }
+
+
+/*```````````````````DARK THEME``````````````````````````*/
+.content .add-todo.dark input{
+    background-color: var(--darktheme-desaturated-Blue);
+    color: var(--darktheme-gray);
+}
+.content .todo-list.dark{
+    background-color: var(--darktheme-desaturated-Blue);
+    color: var(--darktheme-gray);
+}
+
+.todo-list .list-preview.dark li {
+    border-bottom: 1px solid var(--darktheme-grayish-blue);
+}
+
+.list-preview.dark li [type = checkbox]{
+    border: 1.5px solid var(--darktheme-grayish-blue);
+}
+
+/*```````````````````````````````````````````````````````*/
+
 
 /*``````````````````MOBILE DESIGN```````````````````````````````*/
 @media only screen and (max-width: 520px){
