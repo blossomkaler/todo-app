@@ -123,6 +123,9 @@ body{
 
 /*``````````````````MOBILE DESIGN```````````````````````````````*/
 @media only screen and (max-width: 520px){
+.bg{
+    background-image: url(/images/bg-mobile-light.jpg) center no-repeat;
+}
 
 .actions .todo-status{
     display: none;
@@ -135,6 +138,7 @@ body{
 .todo-status-mobile{
     display: flex;
     gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 }
