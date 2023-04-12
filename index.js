@@ -1,3 +1,4 @@
+/*``````````````````````````ADDING TODOs````````````````````````````````*/
 const addTodo = document.querySelector('.add-todo');
 const todoList = document.querySelector('.list-preview');
 const todos =[];
@@ -28,6 +29,23 @@ function populateList(tasks, taskList) {   //tasks is an array of objects
         `;
     }).join('');
 }
+
+/*````````````````````LINE THROUGH CHECKED TODOs``````````````````````*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*``````````````````````````CHANGE THEME````````````````````````````````*/
 const sunIcon = document.querySelector('.sun-icon');

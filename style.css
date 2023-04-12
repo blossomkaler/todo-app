@@ -79,7 +79,9 @@ body{
     font-weight: 700 ;
     font-size: 1.1rem;
     color: var(--grayish-blue);
+    font-family: 'Josefin Sans', sans-serif;
 }
+
 .content .todo-list{
     background-color: white;
     border-radius: 0.3rem;
@@ -107,6 +109,12 @@ body{
     border: 1.5px solid var(--light-gray);
 }
 
+.list-preview li [type = checkbox]:hover{
+    background: linear-gradient(white, white) padding-box,
+    linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+    border: 2px solid transparent;
+}
+
 .list-preview li [type = checkbox]:checked{
     background-image: url(/images/icon-check.svg), linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
     border: none;
@@ -119,13 +127,14 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    font-weight: 700;
 }
 
 .actions .todo-status{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: 0.7rem;
 }
 
 .todo-status-mobile{
@@ -156,28 +165,66 @@ body{
 
 /*``````````````````MOBILE DESIGN```````````````````````````````*/
 @media only screen and (max-width: 520px){
-.bg{
-    background-image: url(/images/bg-mobile-light.jpg) center no-repeat;
+
+body{
+    font-size: 0.8rem;
 }
 
-.actions .todo-status{
-    display: none;
+.bg{
+    background-image: url(/images/bg-mobile-light.jpg) center no-repeat;
+    height: 12rem;
+}
+
+.container{
+    top: 3rem;
+    gap: 0;
 }
 
 .container .heading, .container .content{
     width: 85vw;
 }
 
+.container .heading{
+    margin-bottom: 2rem;
+}
+
+
+.heading .name{
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+}
+
+.content .add-todo input{
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+
+}
+
+.todo-list .list-preview li {
+    padding: 0.8rem 1.2rem;
+}
+
+.list-preview li [type = checkbox]{
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+.actions .todo-status{
+    display: none;
+}
+
 .todo-status-mobile{
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-block: 1.3rem;
     background-color: white;
     box-shadow: 0.4em 0.4em .4em  rgba(0, 0, 0, 0.153), -0.3em 0 .3em rgba(0, 0, 0, 0.2);
     width: 85vw;
-    padding: 1.2rem;
+    padding: 1rem;
     border-radius: 0.3rem;
+    font-weight: 700;
 }
 
 .todo-status-mobile.dark{
