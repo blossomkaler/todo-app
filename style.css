@@ -99,6 +99,12 @@ body{
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    
+}
+
+.checked-item{
+    text-decoration: line-through;
+    color: pink;
 }
 
 .list-preview li [type = checkbox]{
