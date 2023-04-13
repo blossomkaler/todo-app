@@ -16,6 +16,8 @@ addTodo.addEventListener('keyup',function(e){
           populateList(todos, todoList);
           localStorage.setItem('TASKS', JSON.stringify(todos));  // adding todos array to local storage under title-TASKS
           document.querySelector('[name = todo]').value = '';
+
+          location.reload();
     }
 });
 
@@ -29,6 +31,7 @@ function populateList(tasks, taskList) {   //tasks will be an array of objects (
         </li>   
         `;
     }).join('');
+
 }
 
 populateList(todos, todoList);    //ensures thats TASKS from local storage(if any) are retrieved first
@@ -66,10 +69,15 @@ cBoxesArray.forEach(box =>{
     if(box.checked) nextSibling.classList.add('checked-item') ;
 })
   */
-
-/*````````````````````````````SHOW ALL`````````````````````````````````````*/
+/*`````````````````````````````````````````````````````````````````*/
 const checkboxes = [...document.querySelectorAll('.cboxes')];
 
+checkboxes.forEach(box =>{
+    box.addEventListener('click',function(){
+        location.reload();
+    })
+})
+/*````````````````````````````SHOW ALL`````````````````````````````````````*/
 const allTodos = document.querySelector('.all');
 allTodos.addEventListener('click', showAll);
 
