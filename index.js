@@ -24,14 +24,15 @@ function populateList(tasks, taskList) {   //tasks will be an array of objects (
     taskList.innerHTML = tasks.map((task, i) => {
         return `
         <li>
-        <input type="checkbox" data-index=${i} id= "item${i}" ${task.done ? 'checked' : ''} />
-        <label for = "item${i}">${task.newTask}</label>
+        <input type="checkbox" class="cboxes" data-index=${i} id= "item${i}" ${task.done ? 'checked' : ''} />
+        <label for = "item${i}"
+        >${task.newTask}</label>
         </li>   
         `;
     }).join('');
 }
 
-populateList(todos, todoList);    //ensures thats TASKS from local storage are retrieved first
+populateList(todos, todoList);    //ensures thats TASKS from local storage(if any) are retrieved first
 
 
 /*````````````````````Handling check on page refresh``````````````````````*/
@@ -44,17 +45,30 @@ function toggleDone(e) {
     const el = e.target;
     const index = el.dataset.index;
     let checkedElement =document.querySelector("label[for='" + el.id + "']");
+/*     const nextSibling = e.target.nextElementSibling; */
 
     todos[index].done = !todos[index].done;
 /* 
-    if(todos[index].done) checkedElement.classList.add('checked-item');
-    else checkedElement.classList.remove('checked-item'); */
-    
+    if(el.checked) nextSibling.classList.add('checked-item');  */
+
+/*  if(todos[index].done) {checkedElement.classList.add('checked-item');}
+    else {checkedElement.classList.remove('checked-item');} */
         
     localStorage.setItem('TASKS', JSON.stringify(todos));
     populateList(todos, todoList);
   
 }
+/*````````````````````````````````````````````````````````````` */
+/* const cBoxesArray = [...document.querySelectorAll('.cboxes')] ;
+
+console.log(cBoxesArray);
+
+cBoxesArray.forEach(box =>{
+    console.log(box.nextElementSibling);
+    const nextSibling = box.nextElementSibling;
+    if(box.checked) nextSibling.classList.add('checked-item') ;
+})
+  */
 
 /*``````````````````````````CHANGE THEME````````````````````````````````*/
 const sunIcon = document.querySelector('.sun-icon');
@@ -83,3 +97,56 @@ sunIcon.addEventListener('click',function(){
     document.querySelector('.todo-status-mobile').classList.remove('dark');
 
 });
+
+/*``````````````````````````CLEAR COMPLETED````````````````````````````````*/
+const clearComp = document.querySelector('.clear');
+clearComp.addEventListener('click',clearAll);
+
+function clearAll(){
+    todos.forEach((todo,index) =>{
+        if(todo.done) todos.splice(index,1) ;
+
+        localStorage.setItem('TASKS', JSON.stringify(todos));
+        populateList(todos, todoList);
+
+    });     
+}
+
+/*````````````````````````````SHOW ALL`````````````````````````````````````*/
+const checkboxes = [...document.querySelectorAll('.cboxes')];
+
+const allTodos = document.querySelector('.all');
+allTodos.addEventListener('click', showAll);
+
+function showAll(){
+    checkboxes.forEach(box =>{
+        const parentNode = box.parentNode;
+        parentNode.style.display= 'flex';
+    });
+}    
+
+/*````````````````````````````SHOW ACTIVE``````````````````````````````````*/
+const activeTodos = document.querySelector('.active-todo');
+activeTodos.addEventListener('click',showActive); 
+
+function showActive(){
+    checkboxes.forEach(box =>{
+        const parentNode = box.parentNode;
+        if(box.defaultChecked) parentNode.style.display= 'none';
+        else parentNode.style.display= 'flex';
+    }); 
+}
+
+
+/*``````````````````````````SHOW COMPLETED````````````````````````````````*/
+const compTodos = document.querySelector('.complete');
+compTodos.addEventListener('click',showComp);
+
+function showComp(){
+    checkboxes.forEach(box =>{
+        const parentNode = box.parentNode;
+        if(!box.defaultChecked) parentNode.style.display= 'none';
+        else parentNode.style.display= 'flex';
+    }); 
+}
+

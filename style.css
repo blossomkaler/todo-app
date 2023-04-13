@@ -105,6 +105,7 @@ body{
 .checked-item{
     text-decoration: line-through;
     color: pink;
+    background-color: aqua;
 }
 
 .list-preview li [type = checkbox]{
@@ -134,6 +135,7 @@ body{
     align-items: center;
     padding: 1rem;
     font-weight: 700;
+    color: var(--grayish-blue);
 }
 
 .actions .todo-status{
@@ -141,6 +143,22 @@ body{
     justify-content: space-between;
     align-items: center;
     gap: 0.7rem;
+}
+
+.todo-status div, .todo-status div{
+    cursor: pointer;
+}
+
+.actions .clear{
+    cursor: pointer;
+}
+
+.actions .clear:hover{
+    color: var(--light-gray) ;
+}
+
+.todo-status div:hover, .todo-status div:hover{
+    color: var(--light-gray) ;
 }
 
 .todo-status-mobile{
