@@ -44,19 +44,20 @@ function toggleDone(e) {
 
     const el = e.target;
     const index = el.dataset.index;
-/*   let checkedElement =document.querySelector("label[for='" + el.id + "']");
-    const nextSibling = e.target.nextElementSibling; */
+    let checkedElement =document.querySelector("label[for='" + el.id + "']");
+    const nextSibling = e.target.nextElementSibling;
 
     todos[index].done = !todos[index].done;
 
-    /* if(el.checked) nextSibling.classList.add('checked-item');  */
+    if(el.checked) nextSibling.style.textDecoration = "underline";
 
-/*  if(todos[index].done) {checkedElement.classList.add('checked-item');}
-    else {checkedElement.classList.remove('checked-item');} */
-        
+/*     if(todos[index].done) {checkedElement.classList.add('checked-item');}
+    else {checkedElement.classList.remove('checked-item');}
+   */      
     localStorage.setItem('TASKS', JSON.stringify(todos));
     populateList(todos, todoList);
-  
+    location.reload();
+    e.preventDefault();
 }
 /*```````````````````````````````````````````````````````````````````````` */
 /* const cBoxesArray = [...document.querySelectorAll('.cboxes')] ;
@@ -72,12 +73,6 @@ cBoxesArray.forEach(box =>{
 /*`````````````````````````````````````````````````````````````````*/
 const checkboxes = [...document.querySelectorAll('.cboxes')];
 
-checkboxes.forEach(box =>{
-    box.addEventListener('click',function(){
-        location.reload();
-    })
-})
-/*````````````````````````````SHOW ALL`````````````````````````````````````*/
 const allTodos = document.querySelector('.all');
 allTodos.addEventListener('click', showAll);
 
