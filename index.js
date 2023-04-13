@@ -1,7 +1,7 @@
 /*``````````````````````````ADDING TODOs````````````````````````````````*/
 const addTodo = document.querySelector('.add-todo');
 const todoList = document.querySelector('.list-preview');
-const todos = JSON.parse(localStorage.getItem('TASKS')) || [];   // check for TASKS in local storage or start with empty array or no todos
+let todos = JSON.parse(localStorage.getItem('TASKS')) || [];   // check for TASKS in local storage or start with empty array or no todos
 
 
 addTodo.addEventListener('keyup',function(e){
@@ -98,20 +98,6 @@ sunIcon.addEventListener('click',function(){
 
 });
 
-/*``````````````````````````CLEAR COMPLETED````````````````````````````````*/
-const clearComp = document.querySelector('.clear');
-clearComp.addEventListener('click',clearAll);
-
-function clearAll(){
-    todos.forEach((todo,index) =>{
-        if(todo.done) todos.splice(index,1) ;
-
-        localStorage.setItem('TASKS', JSON.stringify(todos));
-        populateList(todos, todoList);
-
-    });     
-}
-
 /*````````````````````````````SHOW ALL`````````````````````````````````````*/
 const checkboxes = [...document.querySelectorAll('.cboxes')];
 
@@ -148,5 +134,17 @@ function showComp(){
         if(!box.defaultChecked) parentNode.style.display= 'none';
         else parentNode.style.display= 'flex';
     }); 
+}
+
+/*``````````````````````````CLEAR COMPLETED````````````````````````````````*/
+const clearComp = document.querySelector('.clear');
+clearComp.addEventListener('click',clearAll);
+
+function clearAll(){
+    
+    todos = todos.filter(todo =>  todo.done == false);
+    localStorage.setItem('TASKS', JSON.stringify(todos));
+    populateList(todos, todoList);
+
 }
 
