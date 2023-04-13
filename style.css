@@ -145,7 +145,7 @@ body{
     gap: 0.7rem;
 }
 
-.todo-status div, .todo-status div{
+.todo-status div{
     cursor: pointer;
 }
 
@@ -161,9 +161,6 @@ body{
     color: var(--light-gray) ;
 }
 
-.todo-status-mobile{
-    display: none;
-}
 
 
 /*```````````````````DARK THEME``````````````````````````*/
@@ -233,16 +230,18 @@ body{
     width: 1.3rem;
     height: 1.3rem;
 }
-
-.actions .todo-status{
-    display: none;
+.content{
+    position: relative;
 }
 
-.todo-status-mobile{
+.actions .todo-status{
+    position: absolute;
+    bottom: -4rem;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-block: 1.3rem;
     background-color: white;
     box-shadow: 0.4em 0.4em .4em  rgba(0, 0, 0, 0.153), -0.3em 0 .3em rgba(0, 0, 0, 0.2);
     width: 85vw;
@@ -251,7 +250,7 @@ body{
     font-weight: 700;
 }
 
-.todo-status-mobile.dark{
+.todo-status.dark{
     color: var(--darktheme-gray);
     background-color: var(--darktheme-desaturated-Blue);
 }

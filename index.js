@@ -71,9 +71,7 @@ cBoxesArray.forEach(box =>{
 const checkboxes = [...document.querySelectorAll('.cboxes')];
 
 const allTodos = document.querySelector('.all');
-const allTodosMob = document.querySelector('.all-mob');
 allTodos.addEventListener('click', showAll);
-allTodosMob.addEventListener('click', showAll);
 
 function showAll(){
     console.log('show all');
@@ -85,9 +83,7 @@ function showAll(){
 
 /*````````````````````````````SHOW ACTIVE``````````````````````````````````*/
 const activeTodos = document.querySelector('.active-todo');
-const activeTodosMob = document.querySelector('.active-todo-mob');
 activeTodos.addEventListener('click',showActive); 
-activeTodosMob.addEventListener('click',showActive); 
 
 function showActive(){
     console.log('show active');
@@ -100,9 +96,7 @@ function showActive(){
 
 /*``````````````````````````SHOW COMPLETED````````````````````````````````*/
 const compTodos = document.querySelector('.complete');
-const compTodosMob = document.querySelector('.complete-mob');
 compTodos.addEventListener('click',showComp);
-compTodosMob.addEventListener('click',showComp);
 
 function showComp(){
     console.log('show comp');
@@ -136,7 +130,7 @@ moonIcon.addEventListener('click',function(){
     addTodo.classList.add('dark');
     todoList.classList.add('dark');
     document.querySelector('.todo-list').classList.add('dark');
-    document.querySelector('.todo-status-mobile').classList.add('dark');
+    document.querySelector('.todo-status').classList.add('dark');
 });
 
 sunIcon.addEventListener('click',function(){    
@@ -147,7 +141,7 @@ sunIcon.addEventListener('click',function(){
     addTodo.classList.remove('dark');
     todoList.classList.remove('dark');
     document.querySelector('.todo-list').classList.remove('dark');
-    document.querySelector('.todo-status-mobile').classList.remove('dark');
+    document.querySelector('.todo-status').classList.remove('dark');
 
 });
 
