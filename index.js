@@ -3,7 +3,6 @@ const addTodo = document.querySelector('.add-todo');
 const todoList = document.querySelector('.list-preview');
 let todos = JSON.parse(localStorage.getItem('TASKS')) || [];   // check for TASKS in local storage or start with empty array or no todos
 
-
 addTodo.addEventListener('keyup',function(e){
     let newTask = document.querySelector('[name = todo]').value;
     if(e.keyCode === 13 && newTask != '' ){
@@ -34,9 +33,7 @@ function populateList(tasks, taskList) {   //tasks will be an array of objects (
 
 populateList(todos, todoList);    //ensures thats TASKS from local storage(if any) are retrieved first
 
-
 /*````````````````````Handling check on page refresh``````````````````````*/
-
 todoList.addEventListener('click', toggleDone);   
 
 function toggleDone(e) {
@@ -45,11 +42,11 @@ function toggleDone(e) {
     const el = e.target;
     const index = el.dataset.index;
     let checkedElement =document.querySelector("label[for='" + el.id + "']");
-/*     const nextSibling = e.target.nextElementSibling; */
+/*  const nextSibling = e.target.nextElementSibling; */
 
     todos[index].done = !todos[index].done;
-/* 
-    if(el.checked) nextSibling.classList.add('checked-item');  */
+
+    /* if(el.checked) nextSibling.classList.add('checked-item');  */
 
 /*  if(todos[index].done) {checkedElement.classList.add('checked-item');}
     else {checkedElement.classList.remove('checked-item');} */
@@ -58,7 +55,7 @@ function toggleDone(e) {
     populateList(todos, todoList);
   
 }
-/*````````````````````````````````````````````````````````````` */
+/*```````````````````````````````````````````````````````````````````````` */
 /* const cBoxesArray = [...document.querySelectorAll('.cboxes')] ;
 
 console.log(cBoxesArray);
@@ -69,6 +66,62 @@ cBoxesArray.forEach(box =>{
     if(box.checked) nextSibling.classList.add('checked-item') ;
 })
   */
+
+/*````````````````````````````SHOW ALL`````````````````````````````````````*/
+const checkboxes = [...document.querySelectorAll('.cboxes')];
+
+const allTodos = document.querySelector('.all');
+const allTodosMob = document.querySelector('.all-mob');
+allTodos.addEventListener('click', showAll);
+allTodosMob.addEventListener('click', showAll);
+
+function showAll(){
+    console.log('show all');
+    checkboxes.forEach(box =>{
+        const parentNode = box.parentNode;
+        parentNode.style.display= 'flex';
+    });
+}    
+
+/*````````````````````````````SHOW ACTIVE``````````````````````````````````*/
+const activeTodos = document.querySelector('.active-todo');
+const activeTodosMob = document.querySelector('.active-todo-mob');
+activeTodos.addEventListener('click',showActive); 
+activeTodosMob.addEventListener('click',showActive); 
+
+function showActive(){
+    console.log('show active');
+    checkboxes.forEach(box =>{
+        const parentNode = box.parentNode;
+        if(box.defaultChecked) parentNode.style.display= 'none';
+        else parentNode.style.display= 'flex';
+    }); 
+}
+
+/*``````````````````````````SHOW COMPLETED````````````````````````````````*/
+const compTodos = document.querySelector('.complete');
+const compTodosMob = document.querySelector('.complete-mob');
+compTodos.addEventListener('click',showComp);
+compTodosMob.addEventListener('click',showComp);
+
+function showComp(){
+    console.log('show comp');
+    checkboxes.forEach(box =>{
+        const parentNode = box.parentNode;
+        if(!box.defaultChecked) parentNode.style.display= 'none';
+        else parentNode.style.display= 'flex';
+    }); 
+}
+
+/*``````````````````````````CLEAR COMPLETED````````````````````````````````*/
+const clearComp = document.querySelector('.clear');
+clearComp.addEventListener('click',clearAll);
+
+function clearAll(){
+    todos = todos.filter(todo =>  todo.done == false);
+    localStorage.setItem('TASKS', JSON.stringify(todos));
+    populateList(todos, todoList);
+}
 
 /*``````````````````````````CHANGE THEME````````````````````````````````*/
 const sunIcon = document.querySelector('.sun-icon');
@@ -97,54 +150,4 @@ sunIcon.addEventListener('click',function(){
     document.querySelector('.todo-status-mobile').classList.remove('dark');
 
 });
-
-/*````````````````````````````SHOW ALL`````````````````````````````````````*/
-const checkboxes = [...document.querySelectorAll('.cboxes')];
-
-const allTodos = document.querySelector('.all');
-allTodos.addEventListener('click', showAll);
-
-function showAll(){
-    checkboxes.forEach(box =>{
-        const parentNode = box.parentNode;
-        parentNode.style.display= 'flex';
-    });
-}    
-
-/*````````````````````````````SHOW ACTIVE``````````````````````````````````*/
-const activeTodos = document.querySelector('.active-todo');
-activeTodos.addEventListener('click',showActive); 
-
-function showActive(){
-    checkboxes.forEach(box =>{
-        const parentNode = box.parentNode;
-        if(box.defaultChecked) parentNode.style.display= 'none';
-        else parentNode.style.display= 'flex';
-    }); 
-}
-
-
-/*``````````````````````````SHOW COMPLETED````````````````````````````````*/
-const compTodos = document.querySelector('.complete');
-compTodos.addEventListener('click',showComp);
-
-function showComp(){
-    checkboxes.forEach(box =>{
-        const parentNode = box.parentNode;
-        if(!box.defaultChecked) parentNode.style.display= 'none';
-        else parentNode.style.display= 'flex';
-    }); 
-}
-
-/*``````````````````````````CLEAR COMPLETED````````````````````````````````*/
-const clearComp = document.querySelector('.clear');
-clearComp.addEventListener('click',clearAll);
-
-function clearAll(){
-    
-    todos = todos.filter(todo =>  todo.done == false);
-    localStorage.setItem('TASKS', JSON.stringify(todos));
-    populateList(todos, todoList);
-
-}
 
