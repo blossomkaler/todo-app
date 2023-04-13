@@ -41,8 +41,8 @@ function toggleDone(e) {
 
     const el = e.target;
     const index = el.dataset.index;
-    let checkedElement =document.querySelector("label[for='" + el.id + "']");
-/*  const nextSibling = e.target.nextElementSibling; */
+/*   let checkedElement =document.querySelector("label[for='" + el.id + "']");
+    const nextSibling = e.target.nextElementSibling; */
 
     todos[index].done = !todos[index].done;
 
@@ -74,7 +74,6 @@ const allTodos = document.querySelector('.all');
 allTodos.addEventListener('click', showAll);
 
 function showAll(){
-    console.log('show all');
     checkboxes.forEach(box =>{
         const parentNode = box.parentNode;
         parentNode.style.display= 'flex';
@@ -86,7 +85,6 @@ const activeTodos = document.querySelector('.active-todo');
 activeTodos.addEventListener('click',showActive); 
 
 function showActive(){
-    console.log('show active');
     checkboxes.forEach(box =>{
         const parentNode = box.parentNode;
         if(box.defaultChecked) parentNode.style.display= 'none';
@@ -99,7 +97,6 @@ const compTodos = document.querySelector('.complete');
 compTodos.addEventListener('click',showComp);
 
 function showComp(){
-    console.log('show comp');
     checkboxes.forEach(box =>{
         const parentNode = box.parentNode;
         if(!box.defaultChecked) parentNode.style.display= 'none';
