@@ -100,7 +100,18 @@ body{
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    
+    position: relative;
+}
+
+.list-preview li * {
+    pointer-events: none;
+}
+
+.list-preview li img{
+    position: absolute;
+    right: 1.2rem;
+    cursor: pointer;
+    display: none;
 }
 
 .checked-item{

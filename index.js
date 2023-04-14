@@ -26,8 +26,8 @@ function populateList(tasks, taskList) {   //tasks will be an array of objects (
         return `
         <li>
         <input type="checkbox" class="cboxes" data-index=${i} id= "item${i}" ${task.done ? 'checked' : ''} />
-        <label for = "item${i}"
-        >${task.newTask}</label>
+        <label for = "item${i}">${task.newTask}</label> 
+        <img src="/images/icon-cross.svg" alt="">
         </li>   
         `;
     }).join('');
@@ -129,7 +129,23 @@ function clearAll(){
     todos = todos.filter(todo =>  todo.done == false);
     localStorage.setItem('TASKS', JSON.stringify(todos));
     populateList(todos, todoList);
+    location.reload();
 }
+
+/*``````````````````````````DISPLAY/HIDE CROSS`````````````````````````````*/
+
+todoList.addEventListener('mouseover',displayCross);
+function displayCross(e){
+    const imgElement = e.target.lastElementChild;
+    imgElement.style.display = 'block'; 
+}
+
+todoList.addEventListener('mouseout',hideCross);
+function hideCross(e){
+    const imgElement = e.target.lastElementChild;
+    imgElement.style.display = 'none';
+}
+
 
 /*````````````````````````````ITEMS LEFT```````````````````````````````````*/
 const itemsLeft = document.querySelector('.items-left span');
