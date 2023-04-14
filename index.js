@@ -76,7 +76,13 @@ const checkboxes = [...document.querySelectorAll('.cboxes')];
 const allTodos = document.querySelector('.all');
 allTodos.addEventListener('click', showAll);
 
+allTodos.classList.add('active-color');
+
 function showAll(){
+    allTodos.classList.add('active-color');
+    activeTodos.classList.remove('active-color');
+    compTodos.classList.remove('active-color');
+
     checkboxes.forEach(box =>{
         const parentNode = box.parentNode;
         parentNode.style.display= 'flex';
@@ -88,6 +94,10 @@ const activeTodos = document.querySelector('.active-todo');
 activeTodos.addEventListener('click',showActive); 
 
 function showActive(){
+    activeTodos.classList.add('active-color');
+    allTodos.classList.remove('active-color');
+    compTodos.classList.remove('active-color');
+    
     checkboxes.forEach(box =>{
         const parentNode = box.parentNode;
         if(box.defaultChecked) parentNode.style.display= 'none';
@@ -100,6 +110,10 @@ const compTodos = document.querySelector('.complete');
 compTodos.addEventListener('click',showComp);
 
 function showComp(){
+    compTodos.classList.add('active-color');
+    allTodos.classList.remove('active-color');
+    activeTodos.classList.remove('active-color');
+
     checkboxes.forEach(box =>{
         const parentNode = box.parentNode;
         if(!box.defaultChecked) parentNode.style.display= 'none';
@@ -116,6 +130,15 @@ function clearAll(){
     localStorage.setItem('TASKS', JSON.stringify(todos));
     populateList(todos, todoList);
 }
+
+/*````````````````````````````ITEMS LEFT```````````````````````````````````*/
+const itemsLeft = document.querySelector('.items-left span');
+
+let count = 0;
+checkboxes.forEach(box =>{
+    if(!box.defaultChecked) count++;
+    itemsLeft.innerHTML = count;
+}); 
 
 /*``````````````````````````CHANGE THEME````````````````````````````````*/
 const sunIcon = document.querySelector('.sun-icon');

@@ -9,6 +9,7 @@
 :root{
     --light-gray : hsl(236, 33%, 92%);
     --grayish-blue: hsl(240, 4%, 42%);
+    --bright-blue: hsl(220, 98%, 61%);
 
     /*``````````dark theme``````````````````*/
     --darktheme-desaturated-Blue: hsl(235, 24%, 19%);
@@ -159,6 +160,10 @@ body{
 
 .todo-status div:hover, .todo-status div:hover{
     color: var(--light-gray) ;
+}
+
+.all.active-color, .active-todo.active-color, .complete.active-color{
+    color: var(--bright-blue);
 }
 
 
