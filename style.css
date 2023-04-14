@@ -248,6 +248,10 @@ body{
     width: 1.3rem;
     height: 1.3rem;
 }
+
+.list-preview li img{
+    height: 0.7rem;
+}
 .content{
     position: relative;
 }
