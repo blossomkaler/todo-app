@@ -27,7 +27,7 @@ function populateList(tasks, taskList) {   //tasks will be an array of objects (
         <li>
         <input type="checkbox" class="cboxes" data-index=${i} id= "item${i}" ${task.done ? 'checked' : ''} />
         <label for = "item${i}">${task.newTask}</label> 
-        <img src="/images/icon-cross.svg" alt="">
+        <img src="/images/icon-cross.svg" alt="" id= "item${i}">
         </li>   
         `;
     }).join('');
@@ -134,7 +134,7 @@ function clearAll(){
 
 /*``````````````````````````DISPLAY/HIDE CROSS`````````````````````````````*/
 
-todoList.addEventListener('mouseover',displayCross);
+/* todoList.addEventListener('mouseover',displayCross);
 function displayCross(e){
     const imgElement = e.target.lastElementChild;
     imgElement.style.display = 'block'; 
@@ -145,7 +145,23 @@ function hideCross(e){
     const imgElement = e.target.lastElementChild;
     imgElement.style.display = 'none';
 }
+ */
+/*``````````````````````````CLEAR TODO(CROSS)`````````````````````````````*/
 
+const crosses =[...document.querySelectorAll('.list-preview li img')];
+
+for (let i = 0; i < crosses.length; i++) {
+     crosses[i].addEventListener("click", function(e) {
+        const imgId =e.target.id;
+        const index = imgId.slice(4);
+
+        todos.splice(index, 1);
+
+        localStorage.setItem('TASKS', JSON.stringify(todos));
+        populateList(todos, todoList);
+        location.reload();
+     });
+ }
 
 /*````````````````````````````ITEMS LEFT```````````````````````````````````*/
 const itemsLeft = document.querySelector('.items-left span');

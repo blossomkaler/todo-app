@@ -102,16 +102,20 @@ body{
     gap: 1.5rem;
     position: relative;
 }
-
-.list-preview li * {
+/* 
+.list-preview li img, .list-preview li label {
     pointer-events: none;
-}
-
+} 
+ */
 .list-preview li img{
     position: absolute;
     right: 1.2rem;
     cursor: pointer;
-    display: none;
+/*     display: none; */
+}
+
+.list-preview li img:hover{
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
 .checked-item{
@@ -176,8 +180,6 @@ body{
 .all.active-color, .active-todo.active-color, .complete.active-color{
     color: var(--bright-blue);
 }
-
-
 
 /*```````````````````DARK THEME``````````````````````````*/
 .content .add-todo.dark input{
